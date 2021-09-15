@@ -59,10 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               deactivatedColor: Colors.grey.withOpacity(0.3),
                               inactiveDates: [
-                                DateTime.now()
-                                    .add(Duration(days: DateTime.sunday)),
-                                DateTime.now()
-                                    .add(Duration(days: DateTime.saturday)),
+                                DateTime.now().add(
+                                    Duration(days: DateTime.now().weekday)),
+                                DateTime.now().add(
+                                    Duration(days: DateTime.now().weekday + 1)),
                               ],
                               onDateChange: (date) {
                                 // New date selected
