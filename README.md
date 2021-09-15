@@ -7,3 +7,5 @@ I use sqflite to save data from json to local storage, and use GetX for State Ma
 It's not perfect, need more improvement for future and I got much lesson in this case. 
 
 Thank You so Much :)
+
+## Screenshot for The App
