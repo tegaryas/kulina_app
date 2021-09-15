@@ -32,7 +32,6 @@ class CartViewModel extends GetxController {
   getAllProduct() async {
     _loading.value = true;
 
-    _cartProductModel.clear();
     _totalPrice = 0;
 
     _cartProductModel = await dbHelper.getAllProduct();

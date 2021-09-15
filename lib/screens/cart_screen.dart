@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kulina_test/screens/home_screen.dart';
 import 'package:kulina_test/utils/color.dart';
 import 'package:kulina_test/view_models/cart_view_model.dart';
 
@@ -342,46 +341,42 @@ class CartScreen extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: GestureDetector(
-                onTap: () {},
-                child: GetBuilder<CartViewModel>(
-                  builder: (controller) =>
-                      controller.cartProductModel.length != 0
-                          ? _buildCartNavBar(controller)
-                          : GestureDetector(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Container(
-                                height: 50,
-                                width: MediaQuery.of(context).size.width,
-                                padding: EdgeInsets.all(10),
-                                margin: EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                  vertical: 10,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Pesan Sekarang',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+              child: GetBuilder<CartViewModel>(
+                builder: (controller) => controller.cartProductModel.length != 0
+                    ? _buildCartNavBar(controller)
+                    : GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Container(
+                          height: 50,
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Pesan Sekarang',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Colors.white,
                                 ),
                               ),
-                            ),
-                ),
+                            ],
+                          ),
+                        ),
+                      ),
               ),
             )
           ],

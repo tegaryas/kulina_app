@@ -40,11 +40,4 @@ class HomeViewModel extends GetxController {
     _loading.value = false;
     update();
   }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
-    getAllProduct();
-  }
 }
