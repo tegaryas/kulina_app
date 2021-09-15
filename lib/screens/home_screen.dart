@@ -77,59 +77,63 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 ];
               },
-              body: SingleChildScrollView(
-                child: Container(
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GetBuilder<CartViewModel>(
-                        builder: (controller) => Text(
-                          DateFormat.yMMMMEEEEd('id')
-                              .format(controller.dateProductAdd),
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+              body: GetBuilder<HomeViewModel>(
+                builder: (controller) {
+                  return SingleChildScrollView(
+                    controller: controller.scrollController,
+                    child: Container(
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 20,
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      GetBuilder<HomeViewModel>(
-                        builder: (controller) => controller.loading.value
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                  color: ColorPallete.orangeColor,
-                                ),
-                              )
-                            : GridView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 15.0,
-                                  mainAxisSpacing: 15.0,
-                                  childAspectRatio: 1 / 1.8,
-                                ),
-                                itemCount: controller.productModel.length,
-                                itemBuilder: (context, index) {
-                                  var data = controller.productModel[index];
-
-                                  return _buildProductCard(data);
-                                },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GetBuilder<CartViewModel>(
+                            builder: (controllerCart) => Text(
+                              DateFormat.yMMMMEEEEd('id')
+                                  .format(controllerCart.dateProductAdd),
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                               ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          controller.loading.value
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                    color: ColorPallete.orangeColor,
+                                  ),
+                                )
+                              : GridView.builder(
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 15.0,
+                                    mainAxisSpacing: 15.0,
+                                    childAspectRatio: 1 / 1.8,
+                                  ),
+                                  itemCount: controller.productModel.length,
+                                  itemBuilder: (context, index) {
+                                    var data = controller.productModel[index];
+
+                                    return _buildProductCard(data);
+                                  },
+                                ),
+                          SizedBox(
+                            height: 90,
+                          )
+                        ],
                       ),
-                      SizedBox(
-                        height: 90,
-                      ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
               ),
             ),
             Align(

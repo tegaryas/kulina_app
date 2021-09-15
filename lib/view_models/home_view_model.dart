@@ -10,18 +10,41 @@ class HomeViewModel extends GetxController {
   List<ProductModel> get productModel => _productList;
   List<ProductModel> _productList = [];
 
+  ScrollController get scrollController => _scrollController;
+  ScrollController _scrollController = ScrollController();
+
+  int _page = 1;
+
   HomeViewModel() {
     getAllProduct();
+    _scrollController.addListener(() async {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        await getAllProduct();
+      }
+    });
   }
 
-  void getAllProduct() async {
+  getAllProduct() async {
     _loading.value = true;
-    var products = await ApiProvider().fetchProductList();
+    var products = await ApiProvider().fetchProductList(_page);
+
     // ignore: unnecessary_null_comparison
     if (products != null) {
-      _productList = products;
+      _productList.addAll(products);
     }
+    if (_page < 4) {
+      ++_page;
+    }
+
     _loading.value = false;
     update();
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    getAllProduct();
   }
 }

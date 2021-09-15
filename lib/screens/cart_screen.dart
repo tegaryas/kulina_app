@@ -33,7 +33,6 @@ class CartScreen extends StatelessWidget {
                 horizontal: 20,
               ),
               child: GetBuilder<CartViewModel>(
-                init: Get.put(CartViewModel()),
                 builder: (controller) => controller.cartProductModel.length == 0
                     ? Container(
                         height: MediaQuery.of(context).size.height,
@@ -351,7 +350,7 @@ class CartScreen extends StatelessWidget {
                           ? _buildCartNavBar(controller)
                           : GestureDetector(
                               onTap: () {
-                                Get.off(() => HomeScreen());
+                                Get.back();
                               },
                               child: Container(
                                 height: 50,
@@ -440,7 +439,7 @@ class CartScreen extends StatelessWidget {
   Widget _buildCartNavBar(CartViewModel cart) {
     return GestureDetector(
       onTap: () {
-        Get.off(() => HomeScreen());
+        Get.back();
       },
       child: Container(
         height: 55,
