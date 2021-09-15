@@ -1,16 +1,9 @@
-# kulina_test
+# Kulina Preliminary Test
 
-A new Flutter project.
+This was a repo for Kulina App
 
-## Getting Started
+I use sqflite to save data from json to local storage, and use GetX for State Management. So when you add a item or product to keranjang, it will storage to local cart and we can retrivied cart data from sqflite to UI.
 
-This project is a starting point for a Flutter application.
+It not perfect need more improvement for future and I got much lesson in this case. 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Thank You so Much :)
