@@ -420,7 +420,6 @@ class CartScreen extends StatelessWidget {
               builder: (controller) => GestureDetector(
                 onTap: () {
                   controller.deleteAllProduct();
-                  print('Hapus Semua Barang');
                 },
                 child: Text(
                   'Hapus Pesanan',

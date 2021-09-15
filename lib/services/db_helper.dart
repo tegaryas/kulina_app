@@ -81,9 +81,4 @@ class CartDatabaseHelper {
   Future close() async {
     db.close();
   }
-
-  // deleteAllProduct() async {
-  //   var dbClient = await database;
-  //   dbClient.de("delete from " + TABLE_NAME);
-  // }
 }
